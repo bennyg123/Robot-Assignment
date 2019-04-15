@@ -1,0 +1,92 @@
+
+<div class="row game-control-row">
+  <div class="col-sm-12">
+      <div class="alert alert-primary" 
+      [ngClass]="{'alert-primary': !notification.error, 'alert-danger' : notification.error}" 
+       role="alert">{{notification.message}}</div>
+  </div>
+</div>
+
+<div class="row game-control-row">
+    <div class="col-sm-2">
+      <h6>X : </h6>
+      <select id="x_pos" name="x_pos" class="form-control select-sm" [(ngModel)]="robot.position.x">
+          <option value="0">0</option> 
+          <option value="1">1</option> 
+          <option value="2">2</option> 
+          <option value="3">3</option> 
+          <option value="4">4</option> 
+      </select>
+    </div>
+
+    <div class="col-sm-2">
+      <h6>Y : </h6>
+      <select class="col-sm-2" id="y_pos" name="y_pos" class="form-control select-sm" [(ngModel)]="robot.position.y">
+          <option value="0">0</option> 
+          <option value="1">1</option> 
+          <option value="2">2</option> 
+          <option value="3">3</option> 
+          <option value="4">4</option> 
+      </select>
+    </div>
+
+    <div class="col-sm-4">
+      <h6>Direction : </h6>
+      <select class="col-sm-2"id="dir" name="dir" class="form-control select-sm" [(ngModel)]="robot.position.dir">
+          <option value="0">North</option> 
+          <option value="1">East</option> 
+          <option value="2">South</option> 
+          <option value="3">West</option> 
+      </select>
+    </div>
+
+    <div class="col-sm-4">
+        <button type="button" class="btn btn-primary place-button" (click)="placeRobotClickHandler()"> Place Robot </button>
+    </div>
+</div>
+
+<div class="row game-control-row">
+  <div class="col-sm-4">
+    <button type="button" class="btn btn-primary" (click)="rotateLeftClickHandler()"> Turn Left </button>
+  </div>
+  <div class="col-sm-4">
+      <button type="button" class="btn btn-primary" (click)="moveForwardClickHandler()"> Move Forward </button>
+  </div>
+  <div class="col-sm-4">
+      <button type="button" class="btn btn-primary" (click)="rotateRightClickHandler()"> Turn Right </button>
+    </div>
+</div>
+
+<div class="row game-control-row">
+  <div class="col-sm-12">
+    <div class="card card-body">
+      <div class="card-title">
+        Report :
+      </div>
+      <div class="card-text report">
+        {{reportMessage}}
+      </div>
+      <button type="button" class="btn btn-primary" (click)="getReport()"> Get Report </button>
+    </div>
+  </div>
+</div>
+
+<div class="row game-control-row">
+  <div class="col-sm-12">
+      <p>
+        Please either click the buttons above or type inputs below<br>
+        PLACE X,Y,F <br>
+        MOVE <br>
+        LEFT <br>
+        RIGHT <br>
+        REPORT
+      </p>
+      <label>User input</label>
+      <input type="text" class="form-control" [(ngModel)]="userInput"/>
+      <button class="btn btn-primary place-button" (click)="userInputHandler()">Enter Input</button>
+      <button type="button" class="btn btn-primary place-button" (click)="sendTestInputToRobot()"> Send Test Inputs </button>
+  </div>
+</div>
+
+
+    
